@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: authentik
-            version: 27.8.3
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: authentik
+        version: 27.8.3
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       crds: CreateReplace
@@ -47,36 +47,34 @@ spec:
             secretKey: "${S3_KEY}"
             encrKey: "${S3_ENCRYPTION_KEY}"
         authentik:
-            credentials:
-                bootstrapToken: ""
-                email: "${EMAIL}"
-                password: "${AUTHENTIK_PASSWORD}"
-            email:
-                from: ""
-                host: "${SMTP}"
-                password: "${SMTP_PASSWORD}"
-                port: 587
-                timeout: 10
-                useSSL: false
-                useTLS: true
-                username: "${EMAIL}"
+          credentials:
+            email: "${EMAIL}"
+            password: "${AUTHENTIK_PASSWORD}"
+          email:
+            host: "${SMTP}"
+            password: "${SMTP_PASSWORD}"
+            port: 587
+            timeout: 10
+            useSSL: false
+            useTLS: true
+            username: "${EMAIL}"
         cnpg:
-            main:
-              password: ${AUTHENTIK_CNPG_PWD}
-              cluster:
-                postgresql:
-                  max_slot_wal_keep_size: 10GB
-                  wal_compression: lz4
-              #mode: recovery
-              backups:
-                enabled: true
-                revision: "2"
-                credentials: s3_CNPG
-                retentionPolicy: "7d"
-              recovery:
-                revision: "2"
-                method: object_store
-                credentials: s3_CNPG
+          main:
+            password: ${AUTHENTIK_CNPG_PWD}
+            cluster:
+              postgresql:
+                max_slot_wal_keep_size: 10GB
+                wal_compression: lz4
+            #mode: recovery
+            backups:
+              enabled: true
+              revision: "2"
+              credentials: s3_CNPG
+              retentionPolicy: "7d"
+            recovery:
+              revision: "2"
+              method: object_store
+              credentials: s3_CNPG
         ingress:
           main:
             enabled: true
@@ -89,27 +87,26 @@ spec:
               homepage:
                 enabled: true
                 href: http://authentik.${BASE_DOMAIN}
-                group: Auth & Security
+                group: "Auth & Security"
                 widget:
                   type: authentik
                   custom: 
                     url: http://authentik.authentik.svc.cluster.local:10229
                     key: ${HOMEPAGE_AUTHENTIK_KEY}
-
                 required: true
         persistence:
-            media:
-                enabled: true
-                path: "${AUTHENTIK_MEDIA_PATH}"
-                mountPath: "/media"
-                server: "${SCALE_SERVER_IP}"
-                type: nfs
-            templates:
-                volsync:
-                  - name: templates
-                    type: restic
-                    credentials: s3
-                    dest:
-                      enabled: true                          
-                    src:
-                      enabled: true
+          media:
+            enabled: true
+            path: "${AUTHENTIK_MEDIA_PATH}"
+            mountPath: "/media"
+            server: "${SCALE_SERVER_IP}"
+            type: nfs
+          templates:
+            volsync:
+              - name: templates
+                type: restic
+                credentials: s3
+                dest:
+                  enabled: true                          
+                src:
+                  enabled: true

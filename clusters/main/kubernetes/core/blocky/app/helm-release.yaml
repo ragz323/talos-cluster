@@ -7,14 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: blocky
-            version: 16.6.4
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
-            interval: 15m
+      spec:
+        chart: blocky
+        version: 16.6.4
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     timeout: 20m
     maxHistory: 3
     install:
@@ -30,59 +29,53 @@ spec:
     uninstall:
       keepHistory: false
     values:
-        global:
-            stopAll: false
-        TZ: America/Los_Angeles
-        credentials:
-          s3_CNPG:
-            type: s3
-            url: "${S3_URL}"
-            bucket: "${S3_CNPG_BUCKET}"
-            accessKey: "${S3_ID}"
-            secretKey: "${S3_KEY}"
-            encrKey: "${S3_ENCRYPTION_KEY}"
-        defaultUpstreams:
-            - tcp-tls:1.1.1.1:853
-            - tcp-tls:1.0.0.1:853
-        k8sgateway:
-            domains:
-                - domain: "${BASE_DOMAIN}"
-                  dnsChallenge:
-                    enabled: false
-            forward:
-                enabled: false
-                options:
-                    - name: tls_servername
-                      value: cloudflare-dns.com
-                primary: tls://1.1.1.1
-                secondary: tls://1.0.0.1
-        service:
-            dns:
-                loadBalancerIP: "${BLOCKY_IP}"
-                type: LoadBalancer  
-            dot:
-                loadBalancerIP: "${BLOCKY_IP}"
-                type: LoadBalancer
-        cnpg:
-            main:
-              password: ${BLOCKY_CNPG_PWD}
-              cluster:
-                postgresql:
-                  max_slot_wal_keep_size: 10GB
-                  wal_compression: lz4
-              #mode: recovery
-              backups:
-                enabled: true
-                revision: "1"
-                credentials: s3_CNPG
-                retentionPolicy: "7d"
-                scheduledBackups:
-                  - name: daily-backup
-                    schedule: "0 1 * * *"
-                    backupOwnerReference: self
-                    immediate: true
-                    suspend: false
-              recovery:
-                revision: "1"
-                method: object_store
-                credentials: s3_CNPG
+      global:
+        stopAll: false
+      TZ: America/Los_Angeles
+      credentials:
+        s3_CNPG:
+          type: s3
+          url: "${S3_URL}"
+          bucket: "${S3_CNPG_BUCKET}"
+          accessKey: "${S3_ID}"
+          secretKey: "${S3_KEY}"
+          encrKey: "${S3_ENCRYPTION_KEY}"
+      defaultUpstreams:
+        - tcp-tls:1.1.1.1:853
+        - tcp-tls:1.0.0.1:853
+      k8sgateway:
+        domains:
+          - domain: "${BASE_DOMAIN}"
+            dnsChallenge:
+              enabled: false
+        forward:
+          enabled: false
+          options:
+            - name: tls_servername
+              value: cloudflare-dns.com
+              primary: tls://1.1.1.1
+              secondary: tls://1.0.0.1
+      service:
+        dns:
+          loadBalancerIP: "${BLOCKY_IP}"
+          type: LoadBalancer  
+        dot:
+          loadBalancerIP: "${BLOCKY_IP}"
+          type: LoadBalancer
+      cnpg:
+        main:
+          password: ${BLOCKY_CNPG_PWD}
+          cluster:
+            postgresql:
+              max_slot_wal_keep_size: 10GB
+              wal_compression: lz4
+            #mode: recovery
+          backups:
+            enabled: true
+            revision: "1"
+            credentials: s3_CNPG
+            retentionPolicy: "7d"
+          recovery:
+            revision: "1"
+            method: object_store
+            credentials: s3_CNPG

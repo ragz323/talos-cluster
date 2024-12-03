@@ -7,14 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: traefik
-            version: 30.0.4
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
-            interval: 15m    
+      spec:
+        chart: traefik
+        version: 30.0.4
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system   
     timeout: 20m
     maxHistory: 3
     install:
@@ -42,24 +41,25 @@ spec:
         access:
           enabled: true
       ingress:
-          main:
+        main:
+          enabled: true
+          hosts:
+            - host: traefik.${BASE_DOMAIN}
+          integrations:
+            certManager:
+              certificateIssuer: cloudflare-star-cert
               enabled: true
-              hosts:
-                  - host: traefik.${BASE_DOMAIN}
-              integrations:
-                  certManager:
-                      certificateIssuer: cloudflare-star-cert
-                      enabled: true
-                  homepage:
-                      enabled: true
-                      group: Infrastructure
-                      href: http://traefik.${BASE_DOMAIN}
-                      widget: 
-                          enabled: true
-                          type: traefik
-                          url: http://traefik.traefik.svc.cluster.local
-                  traefik:
-                      enabled: true  # Flip to false when rebuilding traefik - this will install chain-basic 
+            homepage:
+              enabled: true
+              group: "Infrastructure"
+              href: http://traefik.${BASE_DOMAIN}
+              widget: 
+                enabled: true
+                type: traefik
+                custom:
+                  url: http://traefik.traefik.svc.cluster.local:9000
+            traefik:
+              enabled: true  # Flip to false when rebuilding traefik - this will install chain-basic 
       middlewares:
         redirectRegex:
             - name: redirect-pihole

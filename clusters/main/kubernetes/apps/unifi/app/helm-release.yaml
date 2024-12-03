@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: unifi
-            version: 22.7.1
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: unifi
+        version: 22.7.1
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       remediation:
@@ -48,40 +48,41 @@ spec:
             homepage:
               enabled: true
               group: "Infrastructure"
+              href: https://ubiquity.${BASE_DOMAIN}
               widget:
-                custom:  
+                custom:
                   username: "${HOMEPAGE_UNIFI_USER}"
                   password: "${HOMEPAGE_UNIFI_PASSWORD}"
                   site: "${UNIFI_SITE}"
                   url: http://unifi.unifi.svc.cluster.local:8443
         persistence:
-            config:
-              volsync:
-                - name: config
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                          
-                  src:
-                    enabled: true
+          config:
+            volsync:
+              - name: config
+                type: restic
+                credentials: s3
+                dest:
+                  enabled: true                          
+                src:
+                  enabled: true
         service:
-            comm:
-                enabled: true
-                loadBalancerIP: ${UNIFI_IP}
-                type: LoadBalancer
-            guestportal:
-                enabled: true
-                loadBalancerIP: ${UNIFI_IP}
-                type: LoadBalancer
-            main:
-                enabled: true
-                loadBalancerIP: ${UNIFI_IP}
-                type: LoadBalancer
-            speedtest:
-                enabled: true
-                loadBalancerIP: ${UNIFI_IP}
-                type: LoadBalancer
-            stun:
-                enabled: true
-                loadBalancerIP: ${UNIFI_IP}
-                type: LoadBalancer
+          comm:
+            enabled: true
+            loadBalancerIP: ${UNIFI_IP}
+            type: LoadBalancer
+          guestportal:
+            enabled: true
+            loadBalancerIP: ${UNIFI_IP}
+            type: LoadBalancer
+          main:
+            enabled: true
+            loadBalancerIP: ${UNIFI_IP}
+            type: LoadBalancer
+          speedtest:
+            enabled: true
+            loadBalancerIP: ${UNIFI_IP}
+            type: LoadBalancer
+          stun:
+            enabled: true
+            loadBalancerIP: ${UNIFI_IP}
+            type: LoadBalancer

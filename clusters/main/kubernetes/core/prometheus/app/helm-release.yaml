@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: prometheus
-            version: 19.29.6
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: prometheus
+        version: 19.29.6
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       remediation:
@@ -29,14 +29,14 @@ spec:
         global:
             stopAll: false
         ingress:
-            alertmanager:
-                enabled: false
-            main:
+          alertmanager:
+            enabled: false
+          main:
+            enabled: true
+            hosts:
+              - host: prometheus.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
                 enabled: true
-                hosts:
-                    - host: prometheus.${BASE_DOMAIN}
-                integrations:
-                    certManager:
-                        certificateIssuer: cloudflare-star-cert
-                        enabled: true
        

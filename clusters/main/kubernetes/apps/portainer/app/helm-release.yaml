@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: portainer
-            version: 10.6.3
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: portainer
+        version: 10.6.3
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       remediation:
@@ -38,29 +38,25 @@ spec:
             secretKey: "${S3_KEY}"
             encrKey: "${S3_ENCRYPTION_KEY}"
         ingress:
-            main:
+          main:
+            enabled: true
+            hosts:
+              - host: portainer.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
                 enabled: true
-                hosts:
-                    - host: portainer.${BASE_DOMAIN}
-                integrations:
-                    certManager:
-                        certificateIssuer: cloudflare-star-cert
-                        enabled: true
-                    #traefik:
-                    #    middlewares:
-                    #        - name: auth
-                    #          namespace: ""
         persistence:
-            cache:
+          cache:
+            enabled: true
+            mountPath: /.cache
+            type: emptyDir
+          data:
+            volsync:
+            - name: data
+              type: restic
+              credentials: s3
+              dest:
+                enabled: true                          
+              src:
                 enabled: true
-                mountPath: /.cache
-                type: emptyDir
-            data:
-                volsync:
-                - name: data
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                          
-                  src:
-                    enabled: true

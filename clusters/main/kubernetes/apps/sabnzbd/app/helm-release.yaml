@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: sabnzbd
-            version: 21.2.5
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: sabnzbd
+        version: 21.2.5
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       remediation:
@@ -38,28 +38,28 @@ spec:
             secretKey: "${S3_KEY}"
             encrKey: "${S3_ENCRYPTION_KEY}"
         ingress:
-            main:
+          main:
+            enabled: true
+            hosts:
+            - host: sabnzbd.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
                 enabled: true
-                hosts:
-                    - host: sabnzbd.${BASE_DOMAIN}
-                integrations:
-                    certManager:
-                        certificateIssuer: cloudflare-star-cert
-                        enabled: true
         persistence:
-            config:
-                volsync:
-                - name: config
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                          
-                  src:
-                    enabled: true
+          config:
+            volsync:
+              - name: config
+                type: restic
+                credentials: s3
+                dest:
+                  enabled: true                          
+                src:
+                  enabled: true
         workload:
-            main:
-                podSpec:
-                    containers:
-                        main:
-                            env:
-                                SABNZBD__HOST_WHITELIST_ENTRIES: sabnzbd."${BASE_DOMAIN}"
+          main:
+            podSpec:
+              containers:
+                main:
+                  env:
+                    SABNZBD__HOST_WHITELIST_ENTRIES: sabnzbd."${BASE_DOMAIN}"
