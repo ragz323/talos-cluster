@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: nzbget
-            version: 24.1.0
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: nzbget
+        version: 24.1.0
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
         createNamespace: true
         remediation:
@@ -37,37 +37,36 @@ spec:
             secretKey: "${S3_KEY}"
             encrKey: "${S3_ENCRYPTION_KEY}"
         ingress:
-            main:
+          main:
+            enabled: true
+            hosts:
+              - host: nzbget.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
                 enabled: true
-                hosts:
-                    - host: nzbget.${BASE_DOMAIN}
-                integrations:
-                    certManager:
-                        certificateIssuer: cloudflare-star-cert
-                        enabled: true
-                    homepage:
-                        description: ""
-                        enabled: false
-                        group: Documents & Files
-                        icon: ""
-                        name: ""
-                        widget:
-                            custom:
-                                key: e93cf322-5e33-4d54-ab13-44d03e42e298
-                            enabled: false
+              homepage:
+                enabled: true
+                group: "Documents & Files"
+                href: https://nzbget.${BASE_DOMAIN}
+                widget:
+                  custom:
+                    enabled: false
+                    url: http://nzbget.nzbget.svc.cluster.local:10057
+                    key: "${HOMEPAGE_NZBGET_KEY}"
         persistence:
-            downloads:
-                enabled: true
-                path: "${NZBGET_DOWNLOAD_PATH}"
-                mountPath: "/downloads"
-                server: "${SCALE_SERVER_IP}"
-                type: nfs
-            config:
-              volsync:
-                - name: config
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                            
-                  src:
-                    enabled: true
+          downloads:
+            enabled: true
+            path: "${NZBGET_DOWNLOAD_PATH}"
+            mountPath: "/downloads"
+            server: "${SCALE_SERVER_IP}"
+            type: nfs
+        config:
+          volsync:
+          - name: config
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true                            
+            src:
+              enabled: true

@@ -55,28 +55,26 @@ spec:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
-              traefik:
-                enabled: true
               homepage:
                 enabled: true
                 href: https://nextcloud.${BASE_DOMAIN}
-                group: Documents & Files
+                group: "Documents & Files"
                 widget:
                   type: nextcloud
                   custom:      
-                    url: https://nextcloud.${BASE_DOMAIN}
+                    url: http://nextcloud.nextcloud.svc.cluster.local:8080
                     username: ${HOMEPAGE_NEXTCLOUD_USER}
                     password: ${HOMEPAGE_NEXTCLOUD_PASSWORD} 
         nextcloud:
           clamav:
             enabled: false
           collabora:
-            enabled: false
-            username: ${COLLABORA_USER}
-            password: ${COLLABORA_PASSWORD}
+            enabled: true
+            username: "${COLLABORA_USER}"
+            password: "${COLLABORA_PASSWORD}"
           credentials:
-            initialAdminUser: ${NEXTCLOUD_USER}
-            initialAdminPassword: ${NEXTCLOUD_PASSWORD}
+            initialAdminUser: "${NEXTCLOUD_USER}"
+            initialAdminPassword: "${NEXTCLOUD_PASSWORD}"
           general:
             accessIP: ${TRAEFIK_IP}
             default_phone_region: US

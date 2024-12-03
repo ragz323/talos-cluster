@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: openspeedtest
-            version: 10.2.2
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: openspeedtest
+        version: 10.2.2
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       crds: CreateReplace
@@ -31,22 +31,22 @@ spec:
             stopAll: false
         TZ: America/Los_Angeles
         ingress:
-            main:
+          main:
+            enabled: true
+            hosts:
+            - host: openspeedtest.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
                 enabled: true
-                hosts:
-                    - host: openspeedtest.${BASE_DOMAIN}
-                integrations:
-                    certManager:
-                        certificateIssuer: cloudflare-star-cert
-                        enabled: true
-                    traefik:
-                        enabled: true
-                        middlewares:
-                            - name: auth
-                    homepage:
-                        enabled: true
-                        group: Utilities
-                        icon: openspeedtest.png
-                        href: https://openspeedtest.${BASE_DOMAIN}
-                        widget:
-                            enabled: false
+              traefik:
+                enabled: true
+                middlewares:
+                - name: auth
+              homepage:
+                enabled: true
+                group: "Utilities"
+                icon: openspeedtest.png
+                href: https://openspeedtest.${BASE_DOMAIN}
+                widget:
+                  enabled: false
