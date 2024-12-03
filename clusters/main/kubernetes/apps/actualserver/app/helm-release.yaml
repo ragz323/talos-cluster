@@ -7,13 +7,13 @@ metadata:
 spec:
     interval: 15m
     chart:
-        spec:
-            chart: actualserver
-            version: 12.8.1
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
+      spec:
+        chart: actualserver
+        version: 12.8.1
+        sourceRef:
+          kind: HelmRepository
+          name: truecharts
+          namespace: flux-system
     install:
       createNamespace: true
       remediation:
@@ -38,37 +38,41 @@ spec:
             secretKey: "${S3_KEY}"
             encrKey: "${S3_ENCRYPTION_KEY}"
         ingress:
-            main:
+          main:
+            enabled: true
+            hosts:
+              - host: actualserver.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
                 enabled: true
-                hosts:
-                    - host: actualserver.${BASE_DOMAIN}
-                integrations:
-                    certManager:
-                      certificateIssuer: cloudflare-star-cert
-                      enabled: true
-                    homepage:
-                      enabled: true
-                      group: Documents & Files
-                      icon: sh-actual-budget.png
-                      href: https://actualserver.${BASE_DOMAIN}
-                      widget:
-                        enabled: false
+              homepage:
+                enabled: true
+                group: "Documents & Files"
+                icon: sh-actual-budget.png
+                href: https://actualserver.${BASE_DOMAIN}
+                widget:
+                  enabled: false
+              traefik:
+                enabled: true
+                middlewares:
+                - name: auth
         persistence:
-            server-files:
-                volsync:
-                - name: server-files
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                          
-                  src:
-                    enabled: true
-            user-files:
-                volsync:
-                - name: user-files
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                          
-                  src:
-                    enabled: true
+          server-files:
+            volsync:
+            - name: server-files
+              type: restic
+              credentials: s3
+              dest:
+                enabled: true                          
+              src:
+                enabled: true
+          user-files:
+            volsync:
+            - name: user-files
+              type: restic
+              credentials: s3
+              dest:
+                enabled: true                          
+              src:
+                enabled: true
