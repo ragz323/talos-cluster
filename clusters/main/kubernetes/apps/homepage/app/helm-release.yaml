@@ -95,11 +95,6 @@ spec:
                   href: https://sportsnet.ca/
           services.yaml: |
             ---
-            - Documents & Files:
-            - Infrastructure:
-            - Media:
-            - Auth and Security:
-            - Utilities:
           widgets.yaml: |
             ---
             - kubernetes:
