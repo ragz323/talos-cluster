@@ -70,11 +70,11 @@ spec:
             enabled: false
           collabora:
             enabled: true
-            username: "${COLLABORA_USER}"
-            password: "${COLLABORA_PASSWORD}"
+            username: ${COLLABORA_USER}
+            password: ${COLLABORA_PASSWORD}
           credentials:
-            initialAdminUser: "${NEXTCLOUD_USER}"
-            initialAdminPassword: "${NEXTCLOUD_PASSWORD}"
+            initialAdminUser: ${NEXTCLOUD_USER}
+            initialAdminPassword: ${NEXTCLOUD_PASSWORD}
           general:
             accessIP: ${TRAEFIK_IP}
             default_phone_region: US
@@ -115,7 +115,7 @@ spec:
               enabled: true
               revision: "3"
               credentials: s3_CNPG
-              retentionPolicy: "7d"
+              retentionPolicy: "3d"
             recovery:
               revision: "3"
               method: object_store
