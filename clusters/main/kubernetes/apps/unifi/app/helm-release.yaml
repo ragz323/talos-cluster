@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: unifi
+    namespace: unifi
+spec:
+    interval: 15m
+    chart:
+        spec:
+            chart: unifi
+            version: 22.7.1
+            sourceRef:
+                kind: HelmRepository
+                name: truecharts
+                namespace: flux-system
+    install:
+      createNamespace: true
+      remediation:
+        retries: 3
+    upgrade:
+      cleanupOnFail: true
+      remediation:
+        retries: 3
+    uninstall:
+      keepHistory: false
+    values:
+        global:
+            stopAll: false
+        TZ: America/Los_Angeles
+        credentials:
+          s3:
+            type: s3
+            url: "${S3_URL}"
+            bucket: "${S3_BUCKET}"
+            accessKey: "${S3_ID}"
+            secretKey: "${S3_KEY}"
+            encrKey: "${S3_ENCRYPTION_KEY}"
+        ingress:
+          main:
+            enabled: true
+            hosts:
+              - host: ubiquiti.${BASE_DOMAIN}
+            integrations:
+              certManager:
+                certificateIssuer: cloudflare-star-cert
+                enabled: true
+            homepage:
+              enabled: true
+              group: "Infrastructure"
+              widget:
+                custom:  
+                  username: "${HOMEPAGE_UNIFI_USER}"
+                  password: "${HOMEPAGE_UNIFI_PASSWORD}"
+                  site: "${UNIFI_SITE}"
+                  url: http://unifi.unifi.svc.cluster.local:8443
+        persistence:
+            config:
+              volsync:
+                - name: config
+                  type: restic
+                  credentials: s3
+                  dest:
+                    enabled: true                          
+                  src:
+                    enabled: true
+        service:
+            comm:
+                enabled: true
+                loadBalancerIP: ${UNIFI_IP}
+                type: LoadBalancer
+            guestportal:
+                enabled: true
+                loadBalancerIP: ${UNIFI_IP}
+                type: LoadBalancer
+            main:
+                enabled: true
+                loadBalancerIP: ${UNIFI_IP}
+                type: LoadBalancer
+            speedtest:
+                enabled: true
+                loadBalancerIP: ${UNIFI_IP}
+                type: LoadBalancer
+            stun:
+                enabled: true
+                loadBalancerIP: ${UNIFI_IP}
+                type: LoadBalancer

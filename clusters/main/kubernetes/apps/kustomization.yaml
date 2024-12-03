@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - kubernetes-dashboard/ks.yaml
+  - openspeedtest/ks.yaml
+  - qbittorrent/ks.yaml
+  - nzbget/ks.yaml
+  - unifi/ks.yaml
+  - pihole/ks.yaml
+  - homepage/ks.yaml
+  - nextcloud/ks.yaml
+  - emby/ks.yaml
+  - actualserver/ks.yaml
+  - portainer/ks.yaml
+  - sabnzbd/ks.yaml
