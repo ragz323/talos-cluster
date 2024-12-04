@@ -45,16 +45,16 @@ spec:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
-            homepage:
-              enabled: true
-              group: "Infrastructure"
-              href: https://ubiquity.${BASE_DOMAIN}
-              widget:
-                custom:
-                  username: "${HOMEPAGE_UNIFI_USER}"
-                  password: "${HOMEPAGE_UNIFI_PASSWORD}"
-                  site: "${UNIFI_SITE}"
-                  url: http://unifi.unifi.svc.cluster.local:8443
+              homepage:
+                enabled: true
+                group: "Infrastructure"
+                href: https://ubiquity.${BASE_DOMAIN}
+                widget:
+                  custom:
+                    username: "${HOMEPAGE_UNIFI_USER}"
+                    password: "${HOMEPAGE_UNIFI_PASSWORD}"
+                    site: "${UNIFI_SITE}"
+                    url: http://unifi.unifi.svc.cluster.local:8443
         persistence:
           config:
             volsync:
