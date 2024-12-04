@@ -115,9 +115,11 @@ spec:
                 showSearchSuggestions: true
                 target: _blank
             - datetime:
-                text_size: xl
+                text_size: sm
                 format:
-                timeStyle: short
+                  dateStyle: short
+                  timeStyle: short
+                  hour12: true
             - unifi_console:
                 url: https://unifi.unifi.svc.cluster.local:8443
                 username: ${HOMEPAGE_UNIFI_USER}
