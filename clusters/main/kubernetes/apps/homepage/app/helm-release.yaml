@@ -119,7 +119,7 @@ spec:
                 format:
                 timeStyle: short
             - unifi_console:
-                url: http://unifi.unifi.svc.cluster.local:8443
+                url: https://unifi.unifi.svc.cluster.local:8443
                 username: ${HOMEPAGE_UNIFI_USER}
                 password: ${HOMEPAGE_UNIFI_PASSWORD}
           kubernetes.yaml: |
