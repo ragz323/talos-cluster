@@ -103,7 +103,7 @@ spec:
                   cpu: true
                   memory: true
                   showLabel: true
-                  label: "cluster"
+                  label: "Talos"
                 nodes:
                   show: true
                   cpu: true
@@ -128,12 +128,14 @@ spec:
             mode: cluster
           settings.yaml: |
             ---
+            headerStyle: clean
+            cardBlur: md
             fiveColumns: true
             layout:
               Documents & Files:
                 icon: mdi-file-document-multiple
               Media:
-                icon: mdi-multimedia
+                icon: mdi-video-vintage
               Utilities:
                 icon: mdi-cog
               Infrastructure:
