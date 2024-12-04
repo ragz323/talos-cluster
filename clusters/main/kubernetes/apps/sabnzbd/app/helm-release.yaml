@@ -52,7 +52,7 @@ spec:
                 href: https://sabnzbd.${BASE_DOMAIN}
                 widget:
                   custom:
-                    url: https://sabnzbd.sabnzbd.svc.cluster.local:10097
+                    url: http://sabnzbd.sabnzbd.svc.cluster.local:10097
                     key: ${HOMEPAGE_SABNZBD_KEY}
               traefik:
                 enabled: true
@@ -80,4 +80,4 @@ spec:
               containers:
                 main:
                   env:
-                    SABNZBD__HOST_WHITELIST_ENTRIES: sabnzbd.${BASE_DOMAIN}
+                    SABNZBD__HOST_WHITELIST_ENTRIES: sabnzbd.${BASE_DOMAIN},sabnzbd.sabnzbd.svc
