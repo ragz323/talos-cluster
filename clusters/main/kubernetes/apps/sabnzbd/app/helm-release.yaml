@@ -54,8 +54,6 @@ spec:
                   custom:
                     url: https://sabnzbd.sabnzbd.svc.cluster.local:10097
                     key: ${HOMEPAGE_SABNZBD_KEY}
-
-
         persistence:
           config:
             volsync:
@@ -72,4 +70,4 @@ spec:
               containers:
                 main:
                   env:
-                    SABNZBD__HOST_WHITELIST_ENTRIES: sabnzbd."${BASE_DOMAIN}"
+                    SABNZBD__HOST_WHITELIST_ENTRIES: sabnzbd.${BASE_DOMAIN}
