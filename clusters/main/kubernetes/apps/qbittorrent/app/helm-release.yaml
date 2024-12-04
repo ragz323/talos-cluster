@@ -57,7 +57,14 @@ spec:
             certificateIssuer: cloudflare-star-cert
             enabled: true
           homepage:
-            enabled: false
+            enabled: true
+            group: "Documents & Files"
+            href: https://torrent.${BASE_DOMAIN}
+            widget:
+              custom:
+                url:
+                username: ${HOMEPAGE_QBITTORRENT_USER}
+                password: ${HOMEPAGE_QBITTORRENT_PASSWORD}
           traefik:
             enabled: true
             middlewares:
