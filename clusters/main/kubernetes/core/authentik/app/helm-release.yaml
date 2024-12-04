@@ -90,10 +90,9 @@ spec:
                 group: "Auth & Security"
                 widget:
                   type: authentik
-                  custom: 
-                    enabled: true
+                  custom:
                     url: http://authentik.authentik.svc.cluster.local:10229
-                    key: "${HOMEPAGE_AUTHENTIK_KEY}"
+                    key: ${HOMEPAGE_AUTHENTIK_KEY}
                 required: true
         persistence:
           media:
