@@ -86,12 +86,12 @@ spec:
                 enabled: true
               homepage:
                 enabled: true
-                href: http://authentik.${BASE_DOMAIN}
+                href: https://auth.${BASE_DOMAIN}
                 group: "Auth & Security"
                 widget:
                   type: authentik
                   custom:
-                    url: http://authentik.authentik.svc.cluster.local:10229
+                    url: https://authentik.authentik.svc.cluster.local:10229
                     key: ${HOMEPAGE_AUTHENTIK_KEY}
         persistence:
           media:
