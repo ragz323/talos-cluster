@@ -54,6 +54,10 @@ spec:
                   custom:
                     url: http://sabnzbd.sabnzbd.svc.cluster.local:10097
                     key: ${HOMEPAGE_SABNZBD_KEY}
+              traefik:
+                enabled: true
+                middlewares:
+                - name: auth
         persistence:
           config:
             volsync:
