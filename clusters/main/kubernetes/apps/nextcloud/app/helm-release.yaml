@@ -67,7 +67,7 @@ spec:
                     password: ${HOMEPAGE_NEXTCLOUD_PASSWORD} 
         nextcloud:
           clamav:
-            enabled: true
+            enabled: false
           collabora:
             enabled: false
             username: ${COLLABORA_USER}
