@@ -48,7 +48,7 @@ spec:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
-            homepage:
+              homepage:
                 enabled: true
                 group: "Media"
                 href: https://jellyfin.${BASE_DOMAIN}
