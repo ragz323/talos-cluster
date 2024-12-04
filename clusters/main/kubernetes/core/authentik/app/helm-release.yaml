@@ -93,7 +93,6 @@ spec:
                   custom:
                     url: http://authentik.authentik.svc.cluster.local:10229
                     key: ${HOMEPAGE_AUTHENTIK_KEY}
-                required: true
         persistence:
           media:
             enabled: true
