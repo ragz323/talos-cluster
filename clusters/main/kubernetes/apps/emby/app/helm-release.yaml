@@ -46,14 +46,14 @@ spec:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
-            homepage:
-              enabled: true
-              group: "Media"
-              href: https://emby.${BASE_DOMAIN}
-              widget:
-                custom:
-                  url: http://emby.emby.svc.cluster.local:10079 
-                  key: "${HOMEPAGE_EMBY_KEY}"
+              homepage:
+                enabled: true
+                group: "Media"
+                href: https://emby.${BASE_DOMAIN}
+                widget:
+                  custom:
+                    url: http://emby.emby.svc.cluster.local:10079 
+                    key: "${HOMEPAGE_EMBY_KEY}"
         persistence:
             config:
               volsync:
