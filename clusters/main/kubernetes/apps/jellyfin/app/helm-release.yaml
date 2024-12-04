@@ -49,7 +49,7 @@ spec:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
             homepage:
-                enabled: false
+                enabled: true
                 group: "Media"
                 href: https://jellyfin.${BASE_DOMAIN}
                 widget:
