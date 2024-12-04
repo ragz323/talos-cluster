@@ -65,12 +65,12 @@ spec:
               postgresql:
                 max_slot_wal_keep_size: 10GB
                 wal_compression: lz4
-            #mode: recovery
+            mode: recovery
             backups:
               enabled: true
               revision: "2"
               credentials: s3_CNPG
-              retentionPolicy: "7d"
+              retentionPolicy: "3d"
             recovery:
               revision: "2"
               method: object_store
@@ -91,8 +91,9 @@ spec:
                 widget:
                   type: authentik
                   custom: 
+                    enabled: true
                     url: http://authentik.authentik.svc.cluster.local:10229
-                    key: ${HOMEPAGE_AUTHENTIK_KEY}
+                    key: "${HOMEPAGE_AUTHENTIK_KEY}"
                 required: true
         persistence:
           media:
