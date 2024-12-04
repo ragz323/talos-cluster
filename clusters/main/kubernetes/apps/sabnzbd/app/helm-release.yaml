@@ -52,7 +52,7 @@ spec:
                 href: https://sabnzbd.${BASE_DOMAIN}
                 widgets:
                   custom:
-                    url: https://sabnzbd.sabnzbd.svc.cluster.local:10097
+                    url: http://sabnzbd.sabnzbd.svc.cluster.local:10097
                     key: ${HOMEPAGE_SABNZBD_KEY}
         persistence:
           config:
