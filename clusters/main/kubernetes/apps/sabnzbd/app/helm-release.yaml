@@ -64,6 +64,12 @@ spec:
                   enabled: true                          
                 src:
                   enabled: true
+          downloads:
+            enabled: true
+            path: "${SABNZBD_DOWNLOAD_PATH}"
+            mountPath: "/downloads"
+            server: "${SCALE_SERVER_IP}"
+            type: nfs
         workload:
           main:
             podSpec:
