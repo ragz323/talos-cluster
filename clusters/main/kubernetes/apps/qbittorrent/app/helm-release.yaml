@@ -62,7 +62,7 @@ spec:
             href: https://torrent.${BASE_DOMAIN}
             widget:
               custom:
-                url:
+                url: qbittorrent.qbittorrent.svc.cluster.local:10095
                 username: ${HOMEPAGE_QBITTORRENT_USER}
                 password: ${HOMEPAGE_QBITTORRENT_PASSWORD}
           traefik:
