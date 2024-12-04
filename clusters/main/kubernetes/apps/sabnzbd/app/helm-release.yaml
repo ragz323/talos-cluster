@@ -50,9 +50,9 @@ spec:
                 enabled: true
                 group: "Documents & Files"
                 href: https://sabnzbd.${BASE_DOMAIN}
-                widgets:
+                widget:
                   custom:
-                    url: http://sabnzbd.sabnzbd.svc.cluster.local:10097
+                    url: https://sabnzbd.sabnzbd.svc.cluster.local:10097
                     key: ${HOMEPAGE_SABNZBD_KEY}
               traefik:
                 enabled: true
