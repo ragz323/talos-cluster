@@ -60,7 +60,7 @@ spec:
             username: "${EMAIL}"
         cnpg:
           main:
-            password: ${AUTHENTIK_CNPG_PWD}
+            # password: ${AUTHENTIK_CNPG_PWD}
             cluster:
               postgresql:
                 max_slot_wal_keep_size: 10GB
