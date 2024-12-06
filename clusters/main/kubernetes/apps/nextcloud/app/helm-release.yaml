@@ -112,7 +112,7 @@ spec:
                 wal_compression: lz4
             mode: recovery
             backups:
-              enabled: true
+              enabled: false
               revision: "3"
               credentials: s3_CNPG
               retentionPolicy: "3d"
