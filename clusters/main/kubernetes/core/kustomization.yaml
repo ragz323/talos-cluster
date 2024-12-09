@@ -9,4 +9,3 @@ resources:
   - clusterissuer/ks.yaml
   - authentik/ks.yaml
   - prometheus/ks.yaml
-  - nvidia-device-plugin/ks.yaml
