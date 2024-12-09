@@ -21,14 +21,24 @@ spec:
         remediation:
             retries: 3
     upgrade:
-        crds: CreateReplace
+        cleanupOnFail: true
         remediation:
-            retries: 3
+          strategy: rollback
+          retries: 3
     values:
       image:
         repository: nvcr.io/nvidia/k8s-device-plugin
         tag: v0.17.0
       runtimeClassName: nvidia
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/pci-0300_10de.present
+                    operator: In
+                    values:
+                      - "true"
       config:
         map:
           default: |-
@@ -41,7 +51,7 @@ spec:
                 failRequestsGreaterThanOne: false
                 resources:
                   - name: nvidia.com/gpu
-                    replicas: 5
+                    replicas: 4
       gfd:
         enabled: true
       
