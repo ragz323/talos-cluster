@@ -79,6 +79,6 @@ spec:
             enabled: true
             loadBalancerIP: ${JELLYFIN_IP}    
             type: LoadBalancer
-        #resources:
-        #  limits:
-        #    nvidia.com/gpu: 1
+        resources:
+          limits:
+            nvidia.com/gpu: 1
