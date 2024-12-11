@@ -82,7 +82,7 @@ spec:
         resources:
           limits:
             nvidia.com/gpu: 1
-        workload:
-          main:
-            podSpec:
-              runtimeClassName: "nvidia"
+        #workload:
+        #  main:
+        #    podSpec:
+        #      runtimeClassName: "nvidia"
