@@ -79,10 +79,10 @@ spec:
             enabled: true
             loadBalancerIP: ${JELLYFIN_IP}    
             type: LoadBalancer
-        #resources:
-        #  limits:
-        #    nvidia.com/gpu: 1
-        #workload:
-        #  main:
-        #    podSpec:
-        #      runtimeClassName: "nvidia"
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        workload:
+          main:
+            podSpec:
+              runtimeClassName: "nvidia"
