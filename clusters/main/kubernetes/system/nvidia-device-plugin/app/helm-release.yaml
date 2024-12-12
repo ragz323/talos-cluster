@@ -39,11 +39,6 @@ spec:
                     operator: In
                     values:
                       - "true"
-              - matchExpressions:
-                  - key: feature.node.kubernetes.io/pci-10de.present
-                    operator: In
-                    values:
-                      - "true"
       config:
         map:
           default: |-
@@ -57,6 +52,6 @@ spec:
                 resources:
                   - name: nvidia.com/gpu
                     replicas: 5
-      gfd:
-        enabled: true
+      #gfd:
+      #  enabled: true
       
