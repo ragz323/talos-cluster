@@ -30,20 +30,20 @@ spec:
         repository: nvcr.io/nvidia/k8s-device-plugin
         tag: v0.17.0
       runtimeClassName: nvidia
-      #affinity:
-      #  nodeAffinity:
-      #    requiredDuringSchedulingIgnoredDuringExecution:
-      #      nodeSelectorTerms:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
       #        - matchExpressions:
       #            - key: feature.node.kubernetes.io/pci-0300_10de.present
       #              operator: In
       #              values:
       #                - "true"
-      #        - matchExpressions:
-      #            - key: feature.node.kubernetes.io/pci-0300_1b36.present
-      #              operator: In
-      #              values:
-      #                - "true"
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/pci-0300_1b36.present
+                    operator: In
+                    values:
+                      - "true"
       config:
         map:
           default: |-
