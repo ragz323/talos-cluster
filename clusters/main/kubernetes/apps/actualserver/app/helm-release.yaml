@@ -61,6 +61,7 @@ spec:
           server-files:
             volsync:
             - name: server-files
+              enabled: true
               type: restic
               credentials: s3
               dest:
