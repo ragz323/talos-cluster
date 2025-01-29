@@ -66,11 +66,8 @@ spec:
                     username: ${HOMEPAGE_NEXTCLOUD_USER}
                     password: ${HOMEPAGE_NEXTCLOUD_PASSWORD} 
         nextcloud:
-          clamav:
-            enabled: false
           collabora:
             enabled: true
-            #username: ${COLLABORA_USER}
             password: ${COLLABORA_PASSWORD}
           credentials:
             initialAdminUser: ${NEXTCLOUD_USER}
@@ -78,6 +75,18 @@ spec:
           general:
             accessIP: ${TRAEFIK_IP}
             default_phone_region: US
+          previews:
+            providers:
+            - BMP
+            - GIF
+            - JPEG
+            - Krita
+            - MarkDown
+            - MP3
+            - OpenDocument
+            - PNG
+            - TXT
+            - XBitmap
         persistence:
           config:
             volsync:
@@ -104,7 +113,6 @@ spec:
           data:
             enabled: true
             path: "${NEXTCLOUD_USER_DATA_PATH}"
-            mountPath: "/var/www/html/data"
             server: "${SCALE_SERVER_IP}"
             type: nfs
         cnpg:
@@ -112,9 +120,6 @@ spec:
             cluster:
               singleNode: true
             pgVersion: 15
-              #postgresql:
-              #  max_slot_wal_keep_size: 10GB
-              #  wal_compression: lz4
             mode: recovery
             backups:
               enabled: false
