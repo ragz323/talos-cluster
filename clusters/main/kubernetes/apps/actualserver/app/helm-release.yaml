@@ -58,23 +58,32 @@ spec:
                 middlewares:
                 - name: auth
         persistence:
-          server-files:
-            enabled: true
+          data:
             volsync:
-            - name: server-files
+            - name: data
               type: restic
               credentials: s3
               dest:
                 enabled: true                          
               src:
                 enabled: true
-          user-files:
-            enabled: true
-            volsync:
-            - name: user-files
-              type: restic
-              credentials: s3
-              dest:
-                enabled: true                          
-              src:
-                enabled: true
+          #server-files:
+          #  enabled: true
+          #  volsync:
+          #  - name: server-files
+          #    type: restic
+          #    credentials: s3
+          #    dest:
+          #      enabled: true                          
+          #    src:
+          #      enabled: true
+          #user-files:
+          #  enabled: true
+          #  volsync:
+          #  - name: user-files
+          #    type: restic
+          #    credentials: s3
+          #    dest:
+          #      enabled: true                          
+          #    src:
+          #      enabled: true
