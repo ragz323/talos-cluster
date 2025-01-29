@@ -69,9 +69,9 @@ spec:
           clamav:
             enabled: false
           collabora:
-            enabled: false
-            username: ${COLLABORA_USER}
-            password: ${COLLABORA_PASSWORD}
+            enabled: true
+            #username: ${COLLABORA_USER}
+            password: ${NEXCTLOUD_PASSWORD}
           credentials:
             initialAdminUser: ${NEXTCLOUD_USER}
             initialAdminPassword: ${NEXTCLOUD_PASSWORD}
@@ -83,6 +83,8 @@ spec:
             volsync:
               - name: config
                 type: restic
+                cleanupTempPVC: true
+                cleanupCachePVC: true
                 credentials: s3
                 dest:
                   enabled: true                          
@@ -92,6 +94,8 @@ spec:
             volsync:
               - name: html
                 type: restic
+                cleanupTempPVC: true
+                cleanupCachePVC: true
                 credentials: s3
                 dest:
                   enabled: true                          
@@ -105,7 +109,6 @@ spec:
             type: nfs
         cnpg:
           main:
-            #password: ${NEXTCLOUD_CNPG_PWD}
             cluster:
               singleNode: true
             pgVersion: 15
