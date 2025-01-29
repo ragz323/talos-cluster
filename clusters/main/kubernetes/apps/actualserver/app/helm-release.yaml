@@ -59,9 +59,9 @@ spec:
                 - name: auth
         persistence:
           server-files:
+            enabled: true
             volsync:
             - name: server-files
-              enabled: true
               type: restic
               credentials: s3
               dest:
@@ -69,6 +69,7 @@ spec:
               src:
                 enabled: true
           user-files:
+            enabled: true
             volsync:
             - name: user-files
               type: restic
