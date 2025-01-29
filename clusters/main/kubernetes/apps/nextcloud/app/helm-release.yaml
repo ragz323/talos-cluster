@@ -71,7 +71,7 @@ spec:
           collabora:
             enabled: true
             #username: ${COLLABORA_USER}
-            password: ${NEXCTLOUD_PASSWORD}
+            password: ${NEXTCLOUD_PASSWORD}
           credentials:
             initialAdminUser: ${NEXTCLOUD_USER}
             initialAdminPassword: ${NEXTCLOUD_PASSWORD}
