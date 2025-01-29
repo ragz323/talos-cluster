@@ -119,6 +119,9 @@ spec:
           main:
             cluster:
               singleNode: true
+              postgresql:
+                max_slot_wal_keep_size: 10GB
+                wal_compression: lz4
             pgVersion: 15
             mode: recovery
             backups:
