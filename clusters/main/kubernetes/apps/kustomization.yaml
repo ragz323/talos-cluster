@@ -8,7 +8,7 @@ resources:
   - unifi/ks.yaml
   - pihole/ks.yaml
   - homepage/ks.yaml
-  #- nextcloud/ks.yaml
+  - nextcloud/ks.yaml
   - emby/ks.yaml
   - actualserver/ks.yaml
   - portainer/ks.yaml
