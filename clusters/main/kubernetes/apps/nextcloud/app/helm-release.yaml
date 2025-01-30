@@ -71,8 +71,8 @@ spec:
               wal_compression: lz4
             #mode: recovery
             backups:
-              enabled: false
-              revision: "3"
+              enabled: true
+              #revision: "3"
               credentials: s3_CNPG
               retentionPolicy: "3d"
               scheduledBackups:
@@ -82,7 +82,7 @@ spec:
                 immediate: true
                 suspend: false
             recovery:
-              revision: "2"
+              #revision: "2"
               method: object_store
               credentials: s3_CNPG
         persistence:
