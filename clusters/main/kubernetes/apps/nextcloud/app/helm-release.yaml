@@ -66,10 +66,11 @@ spec:
           main:
             cluster:
               singleNode: true
-              postgresql:
-                max_slot_wal_keep_size: 10GB
-                wal_compression: lz4
-            mode: recovery
+            pgVersion: 15
+              #postgresql:
+              #  max_slot_wal_keep_size: 10GB
+              #  wal_compression: lz4
+            #mode: recovery
             backups:
               enabled: false
               revision: "3"
@@ -81,10 +82,10 @@ spec:
                 backupOwnerReference: self
                 immediate: true
                 suspend: false
-            recovery:
-              revision: "2"
-              method: object_store
-              credentials: s3_CNPG
+            #recovery:
+            #  revision: "2"
+            #  method: object_store
+            #  credentials: s3_CNPG
         persistence:
           config:
             volsync:
@@ -111,7 +112,7 @@ spec:
             type: nfs
         nextcloud:
           collabora:
-            enabled: false
+            enabled: true
             password: ${COLLABORA_PASSWORD}
           credentials:
             initialAdminUser: ${NEXTCLOUD_USER}
