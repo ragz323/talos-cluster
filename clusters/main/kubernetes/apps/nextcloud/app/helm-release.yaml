@@ -67,10 +67,10 @@ spec:
             cluster:
               singleNode: true
             pgVersion: 15
-              #postgresql:
-              #  max_slot_wal_keep_size: 10GB
-              #  wal_compression: lz4
-            #mode: recovery
+            postgresql:
+              max_slot_wal_keep_size: 10GB
+              wal_compression: lz4
+            mode: recovery
             backups:
               enabled: false
               revision: "3"
@@ -82,15 +82,17 @@ spec:
                 backupOwnerReference: self
                 immediate: true
                 suspend: false
-            #recovery:
-            #  revision: "2"
-            #  method: object_store
-            #  credentials: s3_CNPG
+            recovery:
+              revision: "2"
+              method: object_store
+              credentials: s3_CNPG
         persistence:
           config:
             volsync:
               - name: config
                 type: restic
+                cleanupTempPVC: true
+                cleanupCachePVC: true
                 credentials: s3
                 dest:
                   enabled: true                          
@@ -100,6 +102,8 @@ spec:
             volsync:
               - name: html
                 type: restic
+                cleanupTempPVC: true
+                cleanupCachePVC: true
                 credentials: s3
                 dest:
                   enabled: true                          
