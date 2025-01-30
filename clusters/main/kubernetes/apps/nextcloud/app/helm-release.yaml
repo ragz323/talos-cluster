@@ -96,15 +96,15 @@ spec:
                   enabled: true                          
                 src:
                   enabled: true
-          html:
-            volsync:
-              - name: html
-                type: restic
-                credentials: s3
-                dest:
-                  enabled: true                          
-                src:
-                  enabled: true
+          #html:
+          #  volsync:
+          #    - name: html
+          #      type: restic
+          #      credentials: s3
+          #      dest:
+          #        enabled: true                          
+          #      src:
+          #        enabled: true
           data:
             enabled: true
             path: "${NEXTCLOUD_USER_DATA_PATH}"
