@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: hastebin
+    namespace: hastebin
+spec:
+    interval: 5m
+    chart:
+        spec:
+            chart: hastebin
+            version: 7.5.1
+            sourceRef:
+                kind: HelmRepository
+                name: truecharts
+                namespace: flux-system
+            interval: 5m
+    install:
+        createNamespace: true
+        crds: CreateReplace
+        remediation:
+            retries: 3
+    upgrade:
+        crds: CreateReplace
+        remediation:
+            retries: 3
+    values:
+      global:
+          stopAll: false
+      TZ: America/Los_Angeles
+      ingress:
+        main:
+          enabled: true
+          hosts:
+            - host: hastebin.${BASE_DOMAIN}
+          integrations:
+            certManager:
+              certificateIssuer: cloudflare-star-cert
+              enabled: true
