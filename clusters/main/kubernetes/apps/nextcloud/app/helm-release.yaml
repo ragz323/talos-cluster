@@ -69,10 +69,9 @@ spec:
             postgresql:
               max_slot_wal_keep_size: 10GB
               wal_compression: lz4
-            #mode: recovery
+            mode: recovery
             backups:
               enabled: true
-              #revision: "3"
               credentials: s3_CNPG
               retentionPolicy: "3d"
               scheduledBackups:
@@ -82,7 +81,6 @@ spec:
                 immediate: true
                 suspend: false
             recovery:
-              #revision: "2"
               method: object_store
               credentials: s3_CNPG
         persistence:
