@@ -60,19 +60,23 @@ spec:
             username: "${EMAIL}"
         cnpg:
           main:
-            # password: ${AUTHENTIK_CNPG_PWD}
             cluster:
-              postgresql:
-                max_slot_wal_keep_size: 10GB
-                wal_compression: lz4
+                singleNode: true
+            postgresql:
+              max_slot_wal_keep_size: 10GB
+              wal_compression: lz4
             mode: recovery
             backups:
-              enabled: false
-              revision: "2"
+              enabled: true
               credentials: s3_CNPG
               retentionPolicy: "3d"
+              scheduledBackups:
+              - name: daily-backup
+                schedule: "0 5 0 * * *"
+                backupOwnerReference: self
+                immediate: true
+                suspend: false
             recovery:
-              revision: "1"
               method: object_store
               credentials: s3_CNPG
         ingress:
