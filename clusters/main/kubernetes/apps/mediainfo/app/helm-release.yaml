@@ -36,3 +36,9 @@ spec:
             certManager:
               certificateIssuer: cloudflare-star-cert
               enabled: true
+      persistence:
+        storage:
+            enabled: true
+            path: "${MEDIAINFO_PATH}"
+            server: "${SCALE_SERVER_IP}"
+            type: nfs
