@@ -64,8 +64,8 @@ spec:
         redirectRegex:
             - name: redirect-pihole
               permanent: false
-              regex: "^https://([^/]+)/?$"
-              replacement: "https://${1}/admin/"
+              regex: /admin/$
+              replacement: /
         forwardAuth:
             - name: auth
               address: http://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/traefik
