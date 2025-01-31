@@ -115,7 +115,7 @@ spec:
             type: nfs
         nextcloud:
           collabora:
-            enabled: true
+            enabled: false
             password: ${COLLABORA_PASSWORD}
           credentials:
             initialAdminUser: ${NEXTCLOUD_USER}
