@@ -16,3 +16,4 @@ resources:
   - jellyfin/ks.yaml
   - hastebin/ks.yaml
   - mediainfo/ks.yaml
+  - code-server/ks.yaml

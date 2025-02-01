@@ -1,0 +1,61 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: code-server
+    namespace: code-server
+spec:
+    interval: 5m
+    chart:
+        spec:
+            chart: code-server
+            version: 13.11.1
+            sourceRef:
+                kind: HelmRepository
+                name: truecharts
+                namespace: flux-system
+            interval: 5m
+    install:
+        createNamespace: true
+        crds: CreateReplace
+        remediation:
+            retries: 3
+    upgrade:
+        crds: CreateReplace
+        remediation:
+            retries: 3
+    timeout: 20m
+    values:
+      global:
+        stopAll: false
+      TZ: America/Los_Angeles
+      credentials:
+        s3:
+            type: s3
+            url: "${S3_URL}"
+            bucket: "${S3_BUCKET}"
+            accessKey: "${S3_ID}"
+            secretKey: "${S3_KEY}"
+            encrKey: "${S3_ENCRYPTION_KEY}"
+      ingress:
+        main:
+          enabled: true
+          hosts:
+            - host: code.${BASE_DOMAIN}
+          integrations:
+            certManager:
+              certificateIssuer: cloudflare-star-cert
+              enabled: true
+      persistence:
+        config:
+          volsync:
+          - name: config
+            cleanupTempPVC: true
+            cleanupCachePVC: true
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: 10 0 * * *
