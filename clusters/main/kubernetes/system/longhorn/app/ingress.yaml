@@ -4,8 +4,8 @@ metadata:
   name: longhorn
   namespace: longhorn-system
   annotations:
-      #cert-manager.io/cluster-issuer: domain-1-le-prod
-      #cert-manager.io/private-key-rotation-policy: Always
+      cert-manager.io/cluster-issuer: cloudflare-star-cert
+      cert-manager.io/private-key-rotation-policy: Always
       traefik.frontend.passHostHeader: "false"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
