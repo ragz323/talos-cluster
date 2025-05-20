@@ -45,11 +45,11 @@ spec:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
-              traefik:
-                enabled: true
-                middlewares:
-                - name: redirect-pihole
-                  namespace: traefik
+              #traefik:
+                #enabled: true
+                #middlewares:
+                #- name: redirect-pihole
+                #  namespace: traefik
               homepage:
                 enabled: true
                 group: "Infrastructure"
