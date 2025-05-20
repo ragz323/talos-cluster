@@ -81,9 +81,9 @@ spec:
             enabled: true
             loadBalancerIP: ${PIHOLE_IP}
             type: LoadBalancer
-          main:
-            loadBalancerIP: ${PIHOLE_IP}
-            type: LoadBalancer
+          #main:
+          #  loadBalancerIP: ${PIHOLE_IP}
+          #  type: LoadBalancer
         workload:
           main:
             podSpec:
@@ -91,4 +91,4 @@ spec:
                 main:
                   env:
                     FTLCONF_dns_upstreams: ${BLOCKY_IP}
-                    FTLCONF_webserver_api_password: ''
+                    FTLCONF_webserver_api_password: ${PIHOLE_PASSWORD}
