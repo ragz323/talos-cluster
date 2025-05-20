@@ -75,7 +75,7 @@ spec:
           dnsServers:
             - ${BLOCKY_IP}
             - ${BLOCKY_IP}
-          #webPassword: ${PIHOLE_PASSWORD}
+          webPassword: ${PIHOLE_PASSWORD}
         service:
           dns:
             enabled: true
