@@ -75,7 +75,7 @@ spec:
           dnsServers:
             - ${BLOCKY_IP}
             - ${BLOCKY_IP}
-          webPassword: ${PIHOLE_PASSWORD}
+          #webPassword: ${PIHOLE_PASSWORD}
         service:
           dns:
             enabled: true
@@ -84,3 +84,11 @@ spec:
           main:
             loadBalancerIP: ${PIHOLE_IP}
             type: LoadBalancer
+        workload:
+          main:
+            podSpec:
+              containers:
+                main:
+                  env:
+                    FTLCONF_dns_upstreams: ${BLOCKY_IP}
+                    FTLCONF_webserver_api_password: ''
