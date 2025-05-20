@@ -61,11 +61,6 @@ spec:
             traefik:
               enabled: true  # Flip to false when rebuilding traefik - this will install chain-basic 
       middlewares:
-        #redirectRegex:
-        #    - name: redirect-pihole
-        #      permanent: false
-        #      regex: /admin/$
-        #      replacement: /
         forwardAuth:
             - name: auth
               address: http://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/traefik

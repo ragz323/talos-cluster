@@ -45,11 +45,6 @@ spec:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
-              #traefik:
-                #enabled: true
-                #middlewares:
-                #- name: redirect-pihole
-                #  namespace: traefik
               homepage:
                 enabled: true
                 group: "Infrastructure"
@@ -81,9 +76,6 @@ spec:
             enabled: true
             loadBalancerIP: ${PIHOLE_IP}
             type: LoadBalancer
-          #main:
-          #  loadBalancerIP: ${PIHOLE_IP}
-          #  type: LoadBalancer
         workload:
           main:
             podSpec:
