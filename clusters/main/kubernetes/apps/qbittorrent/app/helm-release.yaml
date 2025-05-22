@@ -37,7 +37,7 @@ spec:
     keepHistory: false
   values:
     global:
-      stopAll: true
+      stopAll: false
     TZ: America/Los_Angeles
     credentials:
       s3:
@@ -50,6 +50,12 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
+        annotations:
+          nginx.ingress.kubernetes.io/auth-url: http://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/nginx
+          nginx.ingress.kubernetes.io/auth-signin: https://torrent.${BASE_DOMAIN}/outpost.goauthentik.io/start?rd=$scheme://$http_host$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-entitlements,X-authentik-email,X-authentik-name,X-authentik-uid
+          nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
         hosts:
           - host: torrent.${BASE_DOMAIN}
         integrations:
@@ -66,9 +72,7 @@ spec:
                 username: ${HOMEPAGE_QBITTORRENT_USER}
                 password: ${HOMEPAGE_QBITTORRENT_PASSWORD}
           traefik:
-            enabled: true
-            middlewares:
-            - name: auth
+            enabled: false
     addons:
       vpn:
         type: gluetun

@@ -39,12 +39,15 @@ spec:
       ingress:
         main:
           enabled: true
+          ingressClassName: internal
           hosts:
             - host: code.${BASE_DOMAIN}
           integrations:
             certManager:
               certificateIssuer: cloudflare-star-cert
               enabled: true
+            traefik:
+              enabled: false
       persistence:
         config:
           volsync:

@@ -40,6 +40,7 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: emby.${BASE_DOMAIN}
             integrations:
@@ -54,6 +55,8 @@ spec:
                   custom:
                     url: http://emby.emby.svc.cluster.local:10079 
                     key: "${HOMEPAGE_EMBY_KEY}"
+              traefik:
+                enabled: false
         persistence:
             config:
               volsync:

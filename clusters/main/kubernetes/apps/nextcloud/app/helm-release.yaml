@@ -46,6 +46,7 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: external
             hosts:
               - host: nextcloud.${BASE_DOMAIN}
             integrations:
@@ -62,6 +63,8 @@ spec:
                     url: http://nextcloud.nextcloud.svc.cluster.local:8080
                     username: ${HOMEPAGE_NEXTCLOUD_USER}
                     password: ${HOMEPAGE_NEXTCLOUD_PASSWORD} 
+              traefik:
+                enabled: false
         cnpg:
           main:
             cluster:
@@ -119,7 +122,7 @@ spec:
             initialAdminUser: ${NEXTCLOUD_USER}
             initialAdminPassword: ${NEXTCLOUD_PASSWORD}
           general:
-            accessIP: ${TRAEFIK_IP}
+            accessIP: ${NGINX_EXTERNAL_IP}
             default_phone_region: US
           previews:
             providers:

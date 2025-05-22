@@ -30,12 +30,15 @@ spec:
       ingress:
         main:
           enabled: true
+          ingressClassName: internal
           hosts:
             - host: mediainfo.${BASE_DOMAIN}
           integrations:
             certManager:
               certificateIssuer: cloudflare-star-cert
               enabled: true
+            traefik:
+              enabled: false
       persistence:
         storage:
             enabled: true

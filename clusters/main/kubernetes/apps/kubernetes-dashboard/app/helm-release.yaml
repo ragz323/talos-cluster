@@ -42,9 +42,12 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         hosts:
         - host: kube-dash.${BASE_DOMAIN}
         integrations:
           certManager:
             certificateIssuer: cloudflare-star-cert
             enabled: true
+          traefik:
+              enabled: false

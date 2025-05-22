@@ -40,12 +40,15 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: portainer.${BASE_DOMAIN}
             integrations:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
+              traefik:
+                enabled: false
         persistence:
           cache:
             enabled: true

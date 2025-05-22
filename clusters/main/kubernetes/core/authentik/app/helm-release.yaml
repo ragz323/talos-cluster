@@ -82,6 +82,9 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
+            annotations:
+              nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
             hosts:
               - host: auth.${BASE_DOMAIN}
             integrations:
@@ -97,6 +100,8 @@ spec:
                   custom:
                     url: https://authentik.authentik.svc.cluster.local:10229
                     key: ${HOMEPAGE_AUTHENTIK_KEY}
+              traefik:
+                enabled: false
         persistence:
           media:
             enabled: true

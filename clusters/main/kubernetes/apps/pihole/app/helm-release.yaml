@@ -39,6 +39,7 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: pihole.${BASE_DOMAIN}
             integrations:
@@ -54,6 +55,8 @@ spec:
                   custom:
                     url: http://pihole.pihole.svc.cluster.local:9089
                     key: ${HOMEPAGE_PIHOLE_KEY}
+              traefik:
+                enabled: false
         persistence:
           config:
             volsync:

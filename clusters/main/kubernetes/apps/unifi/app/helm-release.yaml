@@ -39,6 +39,7 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: ubiquiti.${BASE_DOMAIN}
             integrations:
@@ -55,6 +56,8 @@ spec:
                     password: "${HOMEPAGE_UNIFI_PASSWORD}"
                     site: "${UNIFI_SITE}"
                     url: https://unifi.unifi.svc.cluster.local:8443
+              traefik:
+                enabled: false
         persistence:
           config:
             volsync:

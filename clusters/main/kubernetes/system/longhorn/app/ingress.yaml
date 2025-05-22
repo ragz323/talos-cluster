@@ -6,11 +6,12 @@ metadata:
   annotations:
       cert-manager.io/cluster-issuer: cloudflare-star-cert
       cert-manager.io/private-key-rotation-policy: Always
-      traefik.frontend.passHostHeader: "false"
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
-      traefik.ingress.kubernetes.io/router.tls: "true"
+      nginx.ingress.kubernetes.io/auth-url: http://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/nginx
+      nginx.ingress.kubernetes.io/auth-signin: https://longhorn.${BASE_DOMAIN}/outpost.goauthentik.io/start?rd=$scheme://$http_host$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-entitlements,X-authentik-email,X-authentik-name,X-authentik-uid
+      nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
 spec:
+  ingressClassName: internal
   rules:
   - host: longhorn.${BASE_DOMAIN}
     http:
@@ -29,4 +30,4 @@ spec:
 status:
     loadBalancer:
       ingress:
-      - ip: ${TRAEFIK_IP}
+      - ip: ${NGINX_INTERNAL_IP}

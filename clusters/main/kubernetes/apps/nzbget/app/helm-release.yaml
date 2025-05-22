@@ -39,6 +39,7 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: nzbget.${BASE_DOMAIN}
             integrations:
@@ -54,6 +55,8 @@ spec:
                     enabled: false
                     url: http://nzbget.nzbget.svc.cluster.local:10057
                     key: "${HOMEPAGE_NZBGET_KEY}"
+              traefik:
+                enabled: false
         persistence:
           downloads:
             enabled: true

@@ -33,10 +33,13 @@ spec:
             enabled: false
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: prometheus.${BASE_DOMAIN}
             integrations:
               certManager:
                 certificateIssuer: cloudflare-star-cert
                 enabled: true
+              traefik:
+                enabled: false
        

@@ -42,6 +42,7 @@ spec:
         ingress:
           main:
             enabled: true
+            ingressClassName: internal
             hosts:
               - host: jellyfin.${BASE_DOMAIN}
             integrations:
@@ -57,7 +58,9 @@ spec:
                     key: ${HOMEPAGE_JELLYFIN_KEY}
                     url: http://jellyfin.jellyfin.svc.cluster.local:8096
                     enableBlocks: "true"
-                    enableNowPlaying: "true"                           
+                    enableNowPlaying: "true"
+              traefik:
+                enabled: false                    
         persistence:
           config:
             volsync:
