@@ -51,3 +51,5 @@ spec:
             enabled: false
         hosts:
             - host: kube-dash.${BASE_DOMAIN}
+    podOptions:
+      hostUsers: true
