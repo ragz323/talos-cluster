@@ -19,7 +19,7 @@ spec:
   maxHistory: 3
   # icmpEchoReply: true
   driftDetection:
-    mode: warn
+    mode: enable
   install:
     createNamespace: true
     remediation:
