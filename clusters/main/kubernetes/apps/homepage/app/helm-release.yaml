@@ -86,7 +86,7 @@ spec:
             main:
               env:
               # Set this to your host (example: home.mydomain.com)
-                HOMEPAGE_ALLOWED_HOSTS: "homepage.${BASE_DOMAIN}"
+                HOMEPAGE_ALLOWED_HOSTS: "http://0.0.0.0:3000"
     persistence:
       config:
         volsync:
