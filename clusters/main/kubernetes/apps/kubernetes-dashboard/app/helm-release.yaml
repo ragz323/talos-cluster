@@ -43,14 +43,14 @@ spec:
       main:
         enabled: true
         ingressClassName: internal
-        hosts:
-        - host: kube-dash.${BASE_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
         integrations:
           certManager:
             certificateIssuer: cloudflare-star-cert
             enabled: true
           traefik:
-              enabled: false
+            enabled: false
+        hosts:
+            - host: kube-dash.${BASE_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
