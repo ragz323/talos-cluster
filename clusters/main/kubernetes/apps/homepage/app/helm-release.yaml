@@ -76,6 +76,15 @@ spec:
             group: Infrastructure
           traefik:
             enabled: false
+    workload:
+      main:
+        podSpec:
+          automountServiceAccountToken: true
+          containers:
+            main:
+              env:
+              # Set this to your host (example: home.mydomain.com)
+                HOMEPAGE_ALLOWED_HOSTS: "homepage.${BASE_DOMAIN}"
     persistence:
       config:
         volsync:
