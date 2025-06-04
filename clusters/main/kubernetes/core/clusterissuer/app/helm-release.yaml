@@ -45,9 +45,12 @@ spec:
           # Accepts comma-separated regex expressions
           replicationNamespaces: '.*'
           certificates:
-            - name: cloudflare-star-cert-wild
+            - name: cloudflare-wildcard
           enabled: true
           certificateIssuer: cloudflare-star-cert
           hosts:
             - ${BASE_DOMAIN}
             - '*.${BASE_DOMAIN}'
+        podOptions:
+          hostUsers: true
+

@@ -28,3 +28,6 @@ spec:
     dns01RecursiveNameserversOnly: false
     installCRDs: true
     enableCertificateOwnerRef: true
+    podOptions:
+      hostUsers: true
+
