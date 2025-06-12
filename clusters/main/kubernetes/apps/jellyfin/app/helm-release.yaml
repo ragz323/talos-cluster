@@ -64,18 +64,18 @@ spec:
               traefik:
                 enabled: false                    
         persistence:
-          config:
-            volsync:
-              - name: config
-                type: restic
-                credentials: s3
-                dest:
-                  enabled: true                          
-                src:
-                  enabled: true
-                  cacheCapacity: 10Gi
-                trigger:
-                  schedule: 30 0 * * *
+          #config:
+          #  volsync:
+          #    - name: config
+          #      type: restic
+          #      credentials: s3
+          #      dest:
+          #        enabled: true                          
+          #      src:
+          #        enabled: true
+          #        cacheCapacity: 10Gi
+          #      trigger:
+          #        schedule: 30 0 * * *
           media:
             enabled: true
             path: "${JELLYFIN_MEDIA_PATH}"
