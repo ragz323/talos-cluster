@@ -24,6 +24,8 @@ spec:
         remediation:
             retries: 3
     values:
+      global:
+        stopAll: true
       openebs-crds:
         csi:
           volumeSnapshots:
