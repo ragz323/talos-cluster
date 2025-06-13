@@ -25,7 +25,7 @@ spec:
             retries: 3
     values:
       global:
-        stopAll: true
+        stopAll: false
       openebs-crds:
         csi:
           volumeSnapshots:
@@ -43,3 +43,5 @@ spec:
           # The Mayastor backend contains a duplicate of snapshot controller which will cause conflicts
           mayastor:
             enabled: false
+      podOptions:
+        hostUsers: true
