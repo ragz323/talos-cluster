@@ -15,7 +15,7 @@ spec:
          name: truecharts
          namespace: flux-system
     driftDetection:
-      mode: warn
+      mode: enabled
     install:
       createNamespace: true
       remediation:
