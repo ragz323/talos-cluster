@@ -60,17 +60,17 @@ spec:
               traefik:
                 enabled: false
         persistence:
-          config:
-            volsync:
-              - name: config
-                type: restic
-                credentials: s3
-                dest:
-                  enabled: true                          
-                src:
-                  enabled: true
-                  trigger:
-                    schedule: 20 1 * * *
+          #config:
+          #  volsync:
+          #    - name: config
+          #      type: restic
+          #      credentials: s3
+          #      dest:
+          #        enabled: true                          
+          #      src:
+          #        enabled: true
+          #        trigger:
+          #          schedule: 20 1 * * *
         pihole:
           dnsServers:
             - ${BLOCKY_IP}
