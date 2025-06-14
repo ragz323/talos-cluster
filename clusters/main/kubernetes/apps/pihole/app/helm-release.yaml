@@ -73,8 +73,8 @@ spec:
                     schedule: 20 1 * * *
         pihole:
           dnsServers:
-            1.1.1.1
-            1.0.0.1
+            - 1.1.1.1
+            - 1.0.0.1
             #- ${BLOCKY_IP}
             #- ${BLOCKY_IP}
           webPassword: ${PIHOLE_PASSWORD}
