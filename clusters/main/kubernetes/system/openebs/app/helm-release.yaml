@@ -44,7 +44,7 @@ spec:
           mayastor:
             enabled: false
         loki:
-          enabled: falseAdd commentMore actions
+          enabled: false
         alloy:
           enabled: false      
       podOptions:
