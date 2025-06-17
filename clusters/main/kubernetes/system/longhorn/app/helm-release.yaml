@@ -43,3 +43,5 @@ spec:
         defaultClassReplicaCount: 1
       longhornUI:
         replicas: 1
+      podOptions:
+        hostUsers: true
