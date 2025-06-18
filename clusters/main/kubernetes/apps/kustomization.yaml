@@ -4,7 +4,7 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - openspeedtest/ks.yaml
   - qbittorrent/ks.yaml
-  #- nzbget/ks.yaml
+  - nzbget/ks.yaml
   - unifi/ks.yaml
   - pihole/ks.yaml
   - homepage/ks.yaml
