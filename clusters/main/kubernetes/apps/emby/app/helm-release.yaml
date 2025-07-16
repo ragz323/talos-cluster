@@ -60,15 +60,15 @@ spec:
               traefik:
                 enabled: false
         persistence:
-            config:
-              volsync:
-                - name: config
-                  type: restic
-                  credentials: s3
-                  dest:
-                    enabled: true                          
-                  src:
-                    enabled: true
+            #config:
+            #  volsync:
+            #    - name: config
+            #      type: restic
+            #      credentials: s3
+            #      dest:
+            #        enabled: true                          
+            #      src:
+            #        enabled: true
             downloads:
               enabled: true
               path: "${EMBY_MEDIA_PATH}"
