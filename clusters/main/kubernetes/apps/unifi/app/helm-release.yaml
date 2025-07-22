@@ -9,7 +9,7 @@ spec:
     chart:
       spec:
         chart: unifi
-        version: 23.3.0
+        version: 24.2.0
         sourceRef:
           kind: HelmRepository
           name: truecharts
