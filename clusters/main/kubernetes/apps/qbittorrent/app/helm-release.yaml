@@ -76,8 +76,7 @@ spec:
           traefik:
             enabled: false
     addons:
-      vpn:
-        type: gluetun
+      gluetun:
         env:
           VPN_TYPE: "openvpn"
           OPENVPN_PASSWORD: "${OPENVPN_PASSWORD}"
