@@ -76,17 +76,17 @@ spec:
           traefik:
             enabled: false
     addons:
-      gluetun:
-        env:
-          VPN_TYPE: "openvpn"
-          OPENVPN_PASSWORD: "${OPENVPN_PASSWORD}"
-          OPENVPN_USER: "${OPENVPN_USER}"
-          SERVER_COUNTRIES: "${SERVER_COUNTRIES}"
-          UPDATER_PERIOD: "24h"
-          VPN_SERVICE_PROVIDER: "expressvpn"
-        excludedNetworks_IPv4:
-          - "192.168.1.0/24"
-        killSwitch: true
+      #gluetun:
+      #  env:
+      #    VPN_TYPE: "openvpn"
+      #    OPENVPN_PASSWORD: "${OPENVPN_PASSWORD}"
+      #    OPENVPN_USER: "${OPENVPN_USER}"
+      #    SERVER_COUNTRIES: "${SERVER_COUNTRIES}"
+      #    UPDATER_PERIOD: "24h"
+      #    VPN_SERVICE_PROVIDER: "expressvpn"
+      #  excludedNetworks_IPv4:
+      #    - "192.168.1.0/24"
+      #  killSwitch: true
     service:
       torrent:
         enabled: true
