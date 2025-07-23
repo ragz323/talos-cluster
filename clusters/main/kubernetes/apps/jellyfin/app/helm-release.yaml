@@ -82,11 +82,11 @@ spec:
             mountPath: "/media"
             server: "${SCALE_SERVER_IP}"
             type: nfs
-        service:
-          main:
-            enabled: true
-            loadBalancerIP: ${JELLYFIN_IP}    
-            type: LoadBalancer
+        #service:
+        #  main:
+        #    enabled: true
+        #    loadBalancerIP: ${JELLYFIN_IP}    
+        #    type: LoadBalancer
         resources:
           limits:
             nvidia.com/gpu: 1
