@@ -77,10 +77,10 @@ spec:
             - ${BLOCKY_IP}
           webPassword: ${PIHOLE_PASSWORD}
         service:
-          dns:
-            enabled: true
-            loadBalancerIP: ${PIHOLE_IP}
-            type: LoadBalancer
+          #dns:
+          #  enabled: true
+          #  loadBalancerIP: ${PIHOLE_IP}
+          #  type: LoadBalancer
         workload:
           main:
             podSpec:
