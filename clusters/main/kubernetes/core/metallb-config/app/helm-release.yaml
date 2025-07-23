@@ -41,5 +41,5 @@ spec:
         avoidBuggyIPs: false
         addresses:
           - ${METALLB_RANGE}
-          #- ${METALLB_RANGE_2}
-          #- ${METALLB_RANGE_3}
+          - ${METALLB_RANGE_2}
+          - ${METALLB_RANGE_3}
