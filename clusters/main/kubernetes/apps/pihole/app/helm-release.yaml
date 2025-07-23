@@ -78,6 +78,7 @@ spec:
           webPassword: ${PIHOLE_PASSWORD}
         service:
           annotations:
+            enabled: true
             metallb.io/ip-allocated-from-pool: main
             metallb.io/loadBalancerIPs: ${PIHOLE_IP}
             metallb.universe.tf/ip-allocated-from-pool: main
