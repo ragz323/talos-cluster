@@ -77,6 +77,11 @@ spec:
             - ${BLOCKY_IP}
           webPassword: ${PIHOLE_PASSWORD}
         service:
+          annotations:
+            metallb.io/ip-allocated-from-pool: main
+            metallb.io/loadBalancerIPs: ${PIHOLE_IP}
+            metallb.universe.tf/ip-allocated-from-pool: main
+            metallb.universe.tf/loadBalancerIPs: ${PIHOLE_IP}
           dns:
             enabled: true
             loadBalancerIP: ${PIHOLE_IP}
