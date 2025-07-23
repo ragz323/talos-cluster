@@ -76,7 +76,7 @@ spec:
             - ${BLOCKY_IP}
             - ${BLOCKY_IP}
           webPassword: ${PIHOLE_PASSWORD}
-        service:
+        #service:
           #dns:
           #  enabled: true
           #  loadBalancerIP: ${PIHOLE_IP}
