@@ -77,19 +77,19 @@ spec:
             enabled: true
             loadBalancerIP: ${UNIFI_IP}
             type: LoadBalancer
-          guestportal:
-            enabled: true
-            loadBalancerIP: ${UNIFI_IP}
-            type: LoadBalancer
-          main:
-            enabled: true
-            loadBalancerIP: ${UNIFI_IP}
-            type: LoadBalancer
-          speedtest:
-            enabled: true
-            loadBalancerIP: ${UNIFI_IP}
-            type: LoadBalancer
-          stun:
-            enabled: true
-            loadBalancerIP: ${UNIFI_IP}
-            type: LoadBalancer
+          #guestportal:
+          #  enabled: true
+          #  loadBalancerIP: ${UNIFI_IP}
+          #  type: LoadBalancer
+          #main:
+          #  enabled: true
+          #  loadBalancerIP: ${UNIFI_IP}
+          #  type: LoadBalancer
+          #speedtest:
+          #  enabled: true
+          #  loadBalancerIP: ${UNIFI_IP}
+          #  type: LoadBalancer
+          #stun:
+          #  enabled: true
+          #  loadBalancerIP: ${UNIFI_IP}
+          #  type: LoadBalancer
