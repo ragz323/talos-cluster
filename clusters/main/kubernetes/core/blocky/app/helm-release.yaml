@@ -52,7 +52,7 @@ spec:
           loadBalancerIP: "${BLOCKY_IP}"
           type: LoadBalancer  
         dot:
-          loadBalancerIP: "${BLOCKY_IP}"
+          loadBalancerIP: "${BLOCKY_DOT_IP}"
           type: LoadBalancer
       cnpg:
        main:
