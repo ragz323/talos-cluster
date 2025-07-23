@@ -89,13 +89,23 @@ spec:
             SERVER_COUNTRIES: "${SERVER_COUNTRIES}"
             UPDATER_PERIOD: "24h"
             VPN_SERVICE_PROVIDER: "expressvpn"
+            HTTPPROXY: "on"
+            FIREWALL_INPUT_PORTS: "8888"
           excludedNetworks_IPv4:
             - "192.168.1.0/24"
           killSwitch: true
     service:
       torrent:
         enabled: true
-        loadBalancerIP: ${QBITTORRENT_IP}                  
+        loadBalancerIP: ${QBITTORRENT_IP}
+      proxy:
+        enabled: true
+        ports:
+          gluetun:
+            enabled: true
+            port: 8888
+            protocol: "http"
+            targetPort: 8888                
     persistence:
       downloads:
         enabled: true
