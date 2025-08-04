@@ -77,6 +77,9 @@ spec:
             enabled: true
             loadBalancerIP: ${UNIFI_IP}
             type: LoadBalancer
+            integrations:
+              metallb:
+                enabled: true
           #guestportal:
           #  enabled: true
           #  loadBalancerIP: ${UNIFI_IP}

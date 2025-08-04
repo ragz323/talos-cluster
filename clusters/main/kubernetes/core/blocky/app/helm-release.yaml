@@ -50,10 +50,16 @@ spec:
       service:
         dns:
           loadBalancerIP: "${BLOCKY_IP}"
-          type: LoadBalancer  
+          type: loadBalancer
+          integrations:
+              metallb:
+                enabled: true  
         dot:
           loadBalancerIP: "${BLOCKY_DOT_IP}"
           type: LoadBalancer
+          integrations:
+              metallb:
+                enabled: true
       cnpg:
        main:
          enabled: false
