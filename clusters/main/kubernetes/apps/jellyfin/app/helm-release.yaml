@@ -87,9 +87,9 @@ spec:
             enabled: true
             loadBalancerIP: ${JELLYFIN_IP}    
             type: LoadBalancer
-          integrations:
-            metallb:
-              enabled: true
+            integrations:
+              metallb:
+                enabled: true
         resources:
           limits:
             nvidia.com/gpu: 1
