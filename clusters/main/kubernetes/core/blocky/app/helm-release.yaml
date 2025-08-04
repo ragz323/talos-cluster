@@ -50,7 +50,7 @@ spec:
       service:
         dns:
           loadBalancerIP: "${BLOCKY_IP}"
-          type: loadBalancer
+          type: LoadBalancer
           integrations:
               metallb:
                 enabled: true  
