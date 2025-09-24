@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/kube-system/generic-device-plugin
+  path: clusters/main/kubernetes/system/generic-device-plugin/app
   prune: true
   sourceRef:
     kind: GitRepository
