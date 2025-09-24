@@ -13,3 +13,4 @@ kubectl.exe
 *ssh-public-key.txt*
 *-TEMPLATE.yaml
 mounts/
+clustertool_21.exe
